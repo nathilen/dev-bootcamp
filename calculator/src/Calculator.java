@@ -7,4 +7,8 @@ public class Calculator {
         }
         return sum;
     }
+
+    public int totalCostForItems(int quantity, int cost){
+        return quantity * cost;
+    }
 }

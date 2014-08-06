@@ -1,35 +1,47 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
 
 public class CalculatorTest {
 
     private Calculator calculator;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         calculator = new Calculator();
     }
 
     @Test
-    public void shouldKnowHowToAddTwoNumbers() throws Exception {
+    public void shouldKnowHowToAddTwoNumbers() {
         int expectedResult = 9;
         int result = calculator.add(3, 6);
         assertEquals(expectedResult, result);
     }
 
     @Test
-    public void shouldKnowHowToAddNumberWithZero() throws Exception {
+    public void shouldKnowHowToAddNumberWithZero() {
         int expectedResult = 5;
         int result = calculator.add(5, 0);
         assertEquals(expectedResult, result);
     }
 
     @Test
-    public void shouldKnowHowToAddMoreThanTwoNumbers() throws Exception {
+    public void shouldKnowHowToAddMoreThanTwoNumbers() {
         int expectedResult = 15;
         int result = calculator.add(7, 2, 6);
         assertEquals(expectedResult, result);
+    }
+
+    @Test
+    public void shouldKnowHowToMultiplyTheCostByNumberOfItems() {
+        assertEquals(9, calculator.totalCostForItems(3, 3));
+    }
+
+    @Test
+    public void shouldKnowHowToMultiplyAnyCostByAnyNumberOfItems() {
+        assertEquals(8, calculator.totalCostForItems(2, 4));
     }
 }
