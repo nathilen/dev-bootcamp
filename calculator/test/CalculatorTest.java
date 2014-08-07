@@ -1,7 +1,12 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Random;
+
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class CalculatorTest {
 
@@ -41,5 +46,13 @@ public class CalculatorTest {
     @Test
     public void shouldKnowHowToMultiplyAnyCostByAnyNumberOfItems() {
         assertEquals(8, calculator.totalCostForItems(2, 4));
+    }
+
+    @Test
+    public void shouldKnowHowToMultiplyCostByARandomNumber() throws Exception {
+        Random randomNumber = mock(Random.class);
+        when(randomNumber.nextInt()).thenReturn(10);
+        int result=calculator.multiplyCostByRandomNumber(randomNumber,5);
+        assertEquals(50,result);
     }
 }

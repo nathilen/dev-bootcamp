@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Calculator {
 
     public int add(int... operands) {
@@ -10,5 +12,9 @@ public class Calculator {
 
     public int totalCostForItems(int quantity, int cost){
         return quantity * cost;
+    }
+
+    public int multiplyCostByRandomNumber(Random randomNumber, int itemCost) {
+        return itemCost * randomNumber.nextInt();
     }
 }
