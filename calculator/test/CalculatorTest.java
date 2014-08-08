@@ -47,12 +47,4 @@ public class CalculatorTest {
     public void shouldKnowHowToMultiplyAnyCostByAnyNumberOfItems() {
         assertEquals(8, calculator.totalCostForItems(2, 4));
     }
-
-    @Test
-    public void shouldKnowHowToMultiplyCostByARandomNumber() throws Exception {
-        Random randomNumber = mock(Random.class);
-        when(randomNumber.nextInt()).thenReturn(10);
-        int result=calculator.multiplyCostByRandomNumber(randomNumber,5);
-        assertEquals(50,result);
-    }
 }
