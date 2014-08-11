@@ -1,5 +1,10 @@
+import junit.framework.Assert;
 import org.junit.Test;
 
+import java.io.File;
+
+import static junit.framework.Assert.assertFalse;
+import static junit.framework.Assert.assertTrue;
 import static junit.framework.TestCase.assertEquals;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.core.Is.is;
@@ -67,4 +72,32 @@ public class RectangleTest {
         Rectangle square = Rectangle.asSquare(2);
         assertThat(square, is(rectangle));
     }
+
+    @Test
+    public void shouldKnowThatARectangleShouldNotBeNull() throws Exception {
+        Rectangle rectangle = new Rectangle(2, 2);
+        assertEquals(false,rectangle.equals(null));
+    }
+
+    @Test
+    public void shouldNotBeEqualToAnObjectOfADifferentType() throws Exception {
+        Rectangle rectangle = new Rectangle(3, 3);
+        Object obj = new Object();
+        assertEquals(false, rectangle.equals(obj));
+    }
+
+    @Test
+    public void shouldKnowThatTwoRectanglesWithDifferentSidesAreNotTheSame() throws Exception {
+        Rectangle rectangle = new Rectangle(4, 4);
+        Rectangle anotherRectangle = new Rectangle(7, 3);
+        assertEquals(false, rectangle.equals(anotherRectangle));
+    }
+
+    @Test
+    public void shouldCheckIfARectangleHasTheSameIdentityOrNot() throws Exception {
+        Rectangle rectangle = new Rectangle(3, 3);
+        Rectangle anotherRectangle = rectangle;
+        assertEquals(true, rectangle.equals(anotherRectangle));
+    }
+
 }

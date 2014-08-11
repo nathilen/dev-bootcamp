@@ -26,7 +26,32 @@ public class Rectangle {
         return new Rectangle(side, side);
     }
 
+    @Override
+    public boolean equals(Object object) {
+
+        if(this == object)
+        {
+            return true;
+        }
+
+        if(object == null){
+            return  false;
+        }
+
+        if(!(object instanceof Rectangle)){
+            return false;
+        }
+        Rectangle rectangle = (Rectangle) object;
+        if (this.length != rectangle.length ||
+                this.width != rectangle.width) {
+            return false;
+        }
+        return true;
+    }
+
     public String toString() {
         return "Rectangle with width=" + width + ", length=" + length;
     }
+
+
 }
