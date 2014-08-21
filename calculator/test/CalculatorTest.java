@@ -1,17 +1,23 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.Random;
+
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 public class CalculatorTest {
 
     private Calculator calculator;
+    private Random random;
 
     @Before
     public void setUp() {
-        RandomStub random = new RandomStub();
+        random = mock(Random.class);
         calculator = new Calculator(random);
     }
 
@@ -48,11 +54,14 @@ public class CalculatorTest {
 
     @Test
     public void shouldKnowHowToMultiplyWithRandomNumber() throws Exception {
+        when(random.nextInt()).thenReturn(12);
         assertThat(calculator.multiplyByRandom(2), equalTo(24));
+        verify(random).nextInt();
     }
 
     @Test
     public void shouldKnowHowToMultipleZeroWithRandomNumber() throws Exception {
+        when(random.nextInt()).thenReturn(12);
         assertThat(calculator.multiplyByRandom(0), equalTo(0));
     }
 }
