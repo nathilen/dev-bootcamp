@@ -35,7 +35,6 @@ public class RectangleTest {
     @Test(expected = RuntimeException.class)
     public void shouldNotAllowRectangleWithNegativeWidth() throws Exception {
         rectangle = new Rectangle(2, -1);
-        System.out.println(rectangle.area());
     }
 
     @Test(expected = RuntimeException.class)
